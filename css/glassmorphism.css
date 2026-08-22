@@ -1,0 +1,534 @@
+/**
+ * Frost UI — short class names, rich backgrounds
+ * <link rel="stylesheet" href="css/glassmorphism.css">
+ *
+ * Customize on :root:
+ *   --blur: 18px;  --bg: rgba(255,255,255,0.12);  --radius: 20px;
+ */
+
+/* ─── Tokens ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: rgba(255, 255, 255, 0.12);
+  --bg-hover: rgba(255, 255, 255, 0.18);
+  --bg-active: rgba(255, 255, 255, 0.22);
+  --bg-dim: rgba(0, 0, 0, 0.38);
+
+  --blur: 16px;
+  --blur-s: 8px;
+  --blur-l: 24px;
+  --blur-xl: 32px;
+  --sat: 155%;
+  --bright: 100%;
+
+  --edge: 1px solid rgba(255, 255, 255, 0.24);
+  --edge-strong: 1px solid rgba(255, 255, 255, 0.42);
+  --edge-dim: 1px solid rgba(255, 255, 255, 0.1);
+  --glow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
+
+  --radius: 20px;
+  --radius-s: 12px;
+  --radius-l: 28px;
+  --radius-pill: 9999px;
+
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  --shadow-s: 0 4px 16px rgba(0, 0, 0, 0.14);
+  --shadow-l: 0 16px 48px rgba(0, 0, 0, 0.32);
+
+  --ink: #ffffff;
+  --ink-muted: rgba(255, 255, 255, 0.68);
+  --ink-faint: rgba(255, 255, 255, 0.42);
+  --font: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --pad: 1.5rem;
+  --pad-s: 0.75rem 1.25rem;
+  --pad-l: 2rem 2.5rem;
+  --gap: 1rem;
+  --ease: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --scene: #10100e;
+  --blob-a: #d08159;
+  --blob-b: #a8bba2;
+  --blob-c: #e3a82f;
+}
+
+/* ─── Base frost ───────────────────────────────────────────────────────────── */
+
+.frost {
+  position: relative;
+  background: var(--bg);
+  border: var(--edge);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow), var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat)) brightness(var(--bright));
+  backdrop-filter: blur(var(--blur)) saturate(var(--sat)) brightness(var(--bright));
+  color: var(--ink);
+  font-family: var(--font);
+  transition: background var(--ease), border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .frost, .card, .panel, .btn, .pill, .tag, .bar, .field, .box, .side, .ring {
+    background: rgba(255, 255, 255, 0.88);
+    color: #1c1a18;
+  }
+  .dim, .dim.card, .dim.panel { background: rgba(22, 20, 18, 0.92); color: #fff; }
+}
+
+/* intensity */
+.soft  { --bg: rgba(255,255,255,0.06); --blur: var(--blur-s); --shadow: var(--shadow-s); }
+.bold  { --bg: rgba(255,255,255,0.2);  --blur: var(--blur-l); --shadow: var(--shadow-l); }
+.max   { --bg: rgba(255,255,255,0.28); --blur: var(--blur-xl); }
+
+/* theme */
+.dim {
+  --bg: var(--bg-dim);
+  --bg-hover: rgba(0, 0, 0, 0.48);
+  --edge: var(--edge-dim);
+  --glow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+/* color tints */
+.t-sage  { --bg: rgba(168, 187, 162, 0.14); }
+.t-coral { --bg: rgba(208, 129, 89, 0.16); }
+.t-rose  { --bg: rgba(232, 180, 184, 0.14); }
+.t-amber { --bg: rgba(227, 168, 47, 0.14); }
+.t-teal  { --bg: rgba(122, 158, 159, 0.16); }
+.t-rust  { --bg: rgba(172, 103, 60, 0.16); }
+
+/* blur / radius helpers */
+.blur-s { --blur: var(--blur-s); }
+.blur-l { --blur: var(--blur-l); }
+.r-s    { border-radius: var(--radius-s); }
+.r-l    { border-radius: var(--radius-l); }
+.r-pill { border-radius: var(--radius-pill); }
+.r-full { border-radius: 50%; }
+
+/* ─── Components ───────────────────────────────────────────────────────────── */
+
+.card, .panel {
+  padding: var(--pad);
+  background: var(--bg);
+  border: var(--edge);
+  box-shadow: var(--shadow), var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  color: var(--ink);
+  font-family: var(--font);
+}
+.card { border-radius: var(--radius); }
+.panel { padding: var(--pad-l); border-radius: var(--radius-l); box-shadow: var(--shadow-l), var(--glow); }
+.card:hover, .panel:hover { background: var(--bg-hover); }
+.card-s { padding: var(--pad-s); }
+.card-l { padding: var(--pad-l); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--bg);
+  border: var(--edge);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-s), var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur-s)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur-s)) saturate(var(--sat));
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+.btn:hover { background: var(--bg-hover); transform: translateY(-2px); box-shadow: var(--shadow), var(--glow); }
+.btn:active { background: var(--bg-active); transform: translateY(0); }
+.btn-on { background: rgba(255,255,255,0.93); border-color: rgba(255,255,255,0.95); color: #1a1814; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.btn-on:hover { background: #fff; box-shadow: 0 8px 24px rgba(255,255,255,0.22); }
+.btn-clear { background: transparent; box-shadow: none; }
+.btn-s { padding: 0.5rem 1.25rem; font-size: 0.75rem; }
+.btn-l { padding: 1rem 2.25rem; font-size: 1rem; }
+.btn-icon { width: 2.75rem; height: 2.75rem; padding: 0; border-radius: 50%; }
+
+.pill, .tag, .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--bg);
+  border: var(--edge);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur-s)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur-s)) saturate(var(--sat));
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.badge { padding: 0.25rem 0.6rem; font-size: 0.65rem; font-weight: 700; }
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 0.75rem 1.5rem;
+  background: var(--bg);
+  border: var(--edge);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-s), var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+}
+.bar-link {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  color: var(--ink-muted);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--ease), color var(--ease);
+}
+.bar-link:hover, .bar-link.on { background: var(--bg-hover); color: var(--ink); }
+
+.field {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: var(--edge);
+  border-radius: var(--radius-s);
+  box-shadow: var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur-s));
+  backdrop-filter: blur(var(--blur-s));
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color var(--ease), background var(--ease);
+}
+.field::placeholder { color: var(--ink-faint); }
+.field:focus { background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.42); }
+
+.box {
+  padding: var(--pad-l);
+  background: var(--bg);
+  border: var(--edge-strong);
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-l), var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur-l)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur-l)) saturate(var(--sat));
+  color: var(--ink);
+  font-family: var(--font);
+  max-width: 32rem;
+  width: 90%;
+}
+
+.side {
+  padding: var(--pad);
+  background: var(--bg);
+  border-right: var(--edge);
+  box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  backdrop-filter: blur(var(--blur)) saturate(var(--sat));
+  color: var(--ink);
+  font-family: var(--font);
+  min-height: 100vh;
+  width: 280px;
+}
+
+.ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.34);
+  border-radius: 50%;
+  box-shadow: var(--glow);
+  -webkit-backdrop-filter: blur(var(--blur-s));
+  backdrop-filter: blur(var(--blur-s));
+}
+
+/* ─── Type ─────────────────────────────────────────────────────────────────── */
+
+.title {
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.title-s { font-size: 1.25rem; }
+.title-l { font-size: 2.75rem; }
+
+.text { margin: 0; color: var(--ink); font-family: var(--font); font-size: 1rem; line-height: 1.6; }
+.muted { color: var(--ink-muted); font-size: 0.875rem; }
+.faint { color: var(--ink-faint); font-size: 0.8125rem; }
+.cap {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--ink-muted);
+  font-family: var(--font);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Layout ───────────────────────────────────────────────────────────────── */
+
+.wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.stack { display: flex; flex-direction: column; gap: var(--gap); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap); }
+.grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.mid { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.fill { flex: 1; }
+
+.line { height: 1px; margin: 1rem 0; background: rgba(255,255,255,0.14); border: none; }
+.dots { display: flex; gap: 0.5rem; justify-content: center; }
+.dot {
+  width: 8px; height: 8px;
+  background: rgba(255,255,255,0.28);
+  border-radius: 50%;
+  transition: background var(--ease), transform var(--ease);
+}
+.dot.on { background: #fff; transform: scale(1.25); }
+
+/* ─── Scene + living backgrounds ───────────────────────────────────────────── */
+
+.scene {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--scene);
+  color: var(--ink);
+  font-family: var(--font);
+}
+
+.layer { position: relative; z-index: 1; }
+
+/* Slow drift — easy to stare at, never feels static */
+@keyframes hue-drift {
+  0%, 100% { filter: hue-rotate(0deg) saturate(1); }
+  50% { filter: hue-rotate(12deg) saturate(1.08); }
+}
+
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(28px, -18px) scale(1.04); }
+  50% { transform: translate(-12px, 22px) scale(0.97); }
+  75% { transform: translate(18px, 10px) scale(1.02); }
+}
+
+/* ── Terra — rusty earth, golden wheat, warm coral (HueHive earthy gradient) ── */
+.bg-terra {
+  --scene: #14100c;
+  --blob-a: #ac673c;
+  --blob-b: #e3a82f;
+  --blob-c: #d08159;
+  background:
+    radial-gradient(ellipse 85% 65% at 12% 18%, rgba(172, 103, 60, 0.52) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 88% 72%, rgba(227, 168, 47, 0.38) 0%, transparent 52%),
+    radial-gradient(ellipse 60% 50% at 55% 95%, rgba(209, 123, 77, 0.32) 0%, transparent 48%),
+    radial-gradient(ellipse 45% 40% at 72% 22%, rgba(244, 211, 162, 0.18) 0%, transparent 50%),
+    #14100c;
+  animation: hue-drift 48s ease-in-out infinite;
+}
+
+/* ── Sage — muted teal, pale sage, dusty rose (Soft Earth Tones palette) ─────── */
+.bg-sage {
+  --scene: #0f1410;
+  --blob-a: #7a9e9f;
+  --blob-b: #a8bba2;
+  --blob-c: #e8b4b8;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(122, 158, 159, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse 75% 55% at 78% 68%, rgba(168, 187, 162, 0.4) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 50% 88%, rgba(208, 129, 89, 0.28) 0%, transparent 48%),
+    radial-gradient(ellipse 40% 35% at 65% 15%, rgba(232, 180, 184, 0.22) 0%, transparent 50%),
+    #0f1410;
+  animation: hue-drift 52s ease-in-out infinite;
+}
+
+/* ── Ember — burnt orange sunset into deep charcoal ─────────────────────────── */
+.bg-ember {
+  --scene: #120c0a;
+  --blob-a: #c45c3e;
+  --blob-b: #ff8c42;
+  --blob-c: #8b4513;
+  background:
+    radial-gradient(ellipse 90% 70% at 8% 85%, rgba(196, 92, 62, 0.55) 0%, transparent 58%),
+    radial-gradient(ellipse 65% 50% at 92% 20%, rgba(255, 140, 66, 0.42) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 40% 40%, rgba(139, 69, 19, 0.35) 0%, transparent 45%),
+    linear-gradient(168deg, #1a1008 0%, #120c0a 45%, #0a0604 100%);
+  animation: hue-drift 44s ease-in-out infinite;
+}
+
+/* ── Honey — golden hour, peach cream, amber glow ───────────────────────────── */
+.bg-honey {
+  --scene: #1a1208;
+  --blob-a: #ffb347;
+  --blob-b: #ffd4a1;
+  --blob-c: #d17b4d;
+  background:
+    radial-gradient(ellipse 75% 60% at 25% 75%, rgba(255, 179, 71, 0.48) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 55% at 75% 25%, rgba(255, 212, 161, 0.35) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 50% 50%, rgba(209, 123, 77, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 10% 15%, rgba(255, 223, 191, 0.2) 0%, transparent 48%),
+    #1a1208;
+  animation: hue-drift 56s ease-in-out infinite;
+}
+
+/* ── Moss — forest canopy, deep green + terracotta bloom ────────────────────── */
+.bg-moss {
+  --scene: #0a100c;
+  --blob-a: #3d5a45;
+  --blob-b: #7a9e7a;
+  --blob-c: #b5651d;
+  background:
+    radial-gradient(ellipse 85% 65% at 15% 60%, rgba(61, 90, 69, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 30%, rgba(122, 158, 122, 0.42) 0%, transparent 52%),
+    radial-gradient(ellipse 50% 40% at 60% 90%, rgba(181, 101, 29, 0.3) 0%, transparent 48%),
+    radial-gradient(ellipse 45% 35% at 30% 10%, rgba(0, 60, 42, 0.45) 0%, transparent 50%),
+    #0a100c;
+  animation: hue-drift 50s ease-in-out infinite;
+}
+
+/* ── Ocean — deep teal depths, no generic blue-purple ───────────────────────── */
+.bg-ocean {
+  --scene: #061418;
+  --blob-a: #1dac92;
+  --blob-b: #439246;
+  --blob-c: #006c7a;
+  background:
+    radial-gradient(ellipse 80% 60% at 18% 22%, rgba(29, 172, 146, 0.48) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 82% 78%, rgba(67, 146, 70, 0.38) 0%, transparent 52%),
+    radial-gradient(ellipse 60% 45% at 55% 55%, rgba(0, 108, 122, 0.42) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 35% at 70% 12%, rgba(0, 60, 42, 0.35) 0%, transparent 48%),
+    linear-gradient(210deg, #041018 0%, #061418 100%);
+  animation: hue-drift 46s ease-in-out infinite;
+}
+
+/* ── Dusk — coral sunset melting into midnight stone (Codioful-inspired, tuned) */
+.bg-dusk {
+  --scene: #100e12;
+  --blob-a: #ec8686;
+  --blob-b: #1dac92;
+  --blob-c: #c4a882;
+  background:
+    linear-gradient(145deg, rgba(236, 134, 134, 0.35) 0%, transparent 42%),
+    radial-gradient(ellipse 75% 55% at 90% 15%, rgba(29, 172, 146, 0.38) 0%, transparent 52%),
+    radial-gradient(ellipse 65% 50% at 10% 80%, rgba(196, 168, 130, 0.32) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 45% at 50% 50%, rgba(32, 30, 30, 0.6) 0%, transparent 55%),
+    #100e12;
+  animation: hue-drift 42s ease-in-out infinite;
+}
+
+/* ── Mineral — stone silence, warm grey scale (Mineral Silence palette) ─────── */
+.bg-stone {
+  --scene: #201e1e;
+  --blob-a: #a1948d;
+  --blob-b: #d3c7c0;
+  --blob-c: #8a7f78;
+  background:
+    radial-gradient(ellipse 80% 60% at 22% 28%, rgba(161, 148, 141, 0.42) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 55% at 78% 72%, rgba(211, 199, 192, 0.28) 0%, transparent 52%),
+    radial-gradient(ellipse 50% 40% at 50% 90%, rgba(138, 127, 120, 0.35) 0%, transparent 48%),
+    linear-gradient(180deg, #2a2828 0%, #201e1e 50%, #141212 100%);
+  animation: hue-drift 60s ease-in-out infinite;
+}
+
+/* ── Bloom — layered mesh, earthy + green (Earthy Gradient Bloom inspired) ──── */
+.bg-bloom {
+  --scene: #0c0e0a;
+  --blob-a: #c45c3e;
+  --blob-b: #7eff41;
+  --blob-c: #7856ff;
+  background:
+    radial-gradient(90% 100% at 50% 0%, rgba(122, 158, 122, 0.35) 0%, transparent 55%),
+    radial-gradient(110% 215% at 100% 0%, rgba(196, 92, 62, 0.28) 0%, rgba(110, 200, 80, 0.22) 45%, transparent 70%),
+    linear-gradient(130deg, rgba(120, 86, 255, 0.18) 0%, transparent 50%),
+    linear-gradient(230deg, rgba(126, 255, 65, 0.12) 0%, transparent 45%),
+    #0c0e0a;
+  background-blend-mode: screen, overlay, soft-light, normal;
+  animation: hue-drift 54s ease-in-out infinite;
+}
+
+/* ── Wine — deep burgundy, dusty rose, warm cream ───────────────────────────── */
+.bg-wine {
+  --scene: #140a0c;
+  --blob-a: #8b3a4a;
+  --blob-b: #e8b4b8;
+  --blob-c: #5c2e35;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 70%, rgba(139, 58, 74, 0.52) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 80% 25%, rgba(232, 180, 184, 0.32) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 45% 40%, rgba(92, 46, 53, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 65% 85%, rgba(245, 241, 236, 0.12) 0%, transparent 48%),
+    #140a0c;
+  animation: hue-drift 48s ease-in-out infinite;
+}
+
+/* floating blobs */
+.blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(52px);
+  opacity: 0.62;
+  animation: blob-drift 22s ease-in-out infinite;
+}
+
+.blob-a {
+  width: 340px; height: 340px;
+  top: -90px; left: -70px;
+  background: var(--blob-a);
+  animation-delay: 0s;
+}
+.blob-b {
+  width: 300px; height: 300px;
+  top: 38%; right: -90px;
+  background: var(--blob-b);
+  animation-delay: -7s;
+}
+.blob-c {
+  width: 260px; height: 260px;
+  bottom: -70px; left: 28%;
+  background: var(--blob-c);
+  animation-delay: -14s;
+}
+
+/* ─── A11y ───────────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-transparency: reduce) {
+  .frost, .card, .panel, .btn, .pill, .tag, .bar, .field, .box, .side, .ring {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(28, 26, 24, 0.94);
+  }
+  .bg-terra, .bg-sage, .bg-ember, .bg-honey, .bg-moss, .bg-ocean,
+  .bg-dusk, .bg-stone, .bg-bloom, .bg-wine { animation: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+  .btn:hover { transform: none; }
+  .bg-terra, .bg-sage, .bg-ember, .bg-honey, .bg-moss, .bg-ocean,
+  .bg-dusk, .bg-stone, .bg-bloom, .bg-wine { animation: none; }
+}
