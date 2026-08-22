@@ -1,0 +1,414 @@
+================================================================================
+FROST UI — FULL CLASS & KEYWORD REFERENCE
+File: css/glassmorphism.css
+================================================================================
+
+Combine classes on the same element. Example: class="card bold t-coral dim"
+
+
+================================================================================
+1. PAGE SETUP (MINIMUM)
+================================================================================
+
+Class       | Use on   | What it does
+------------|----------|--------------------------------------------------
+scene       | <body>   | Full-page wrapper, min height 100vh
+bg-terra    | <body>   | Rust / gold / coral background
+bg-sage     | <body>   | Teal / sage / rose background
+bg-ember    | <body>   | Burnt orange sunset background
+bg-honey    | <body>   | Golden peach / amber background
+bg-moss     | <body>   | Forest green / terracotta background
+bg-ocean    | <body>   | Deep teal / jade background
+bg-dusk     | <body>   | Coral sunset + stone midnight
+bg-stone    | <body>   | Warm grey mineral tones
+bg-bloom    | <body>   | Layered earthy mesh + green
+bg-wine     | <body>   | Burgundy / dusty rose background
+blobs       | <div>    | Floating blob container (behind content)
+blob        | <div>    | Single blob (needs blob-a, blob-b, or blob-c)
+blob-a      | <div>    | Top-left blob
+blob-b      | <div>    | Right-side blob
+blob-c      | <div>    | Bottom blob
+layer       | <div>    | Content layer above blobs
+
+Example page shell:
+
+<body class="scene bg-sage">
+  <div class="blobs">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+  <div class="layer wrap">
+    ...your content...
+  </div>
+</body>
+
+
+================================================================================
+2. COMPONENTS (MAIN BUILDING BLOCKS)
+================================================================================
+
+Class     | Use on                  | What it makes
+----------|-------------------------|------------------------------------------
+frost     | any element             | Base frosted glass effect (generic)
+card      | <div>                   | Glass card with padding
+panel     | <div>                   | Larger glass panel (hero / modal style)
+btn       | <button> / <a>          | Pill-shaped glass button
+pill      | <span>                  | Small label chip
+tag       | <span>                  | Same as pill
+badge     | <span>                  | Tiny badge (smaller than pill)
+bar       | <nav>                   | Floating navigation bar
+bar-link  | <a>                     | Nav link inside bar
+field     | <input> / <textarea>    | Glass text input
+box       | <div>                   | Modal / dialog box
+side      | <div> / <aside>         | Sidebar panel
+ring      | <div>                   | Circular glass ring
+
+
+================================================================================
+3. COMPONENT SIZE / STYLE MODIFIERS
+================================================================================
+
+Class      | Combine with | Effect
+-----------|--------------|----------------------------------
+card-s     | card         | Small padding
+card-l     | card         | Large padding
+btn-on     | btn          | Solid white CTA button
+btn-clear  | btn          | Transparent ghost button
+btn-s      | btn          | Small button
+btn-l      | btn          | Large button
+btn-icon   | btn          | Round icon button
+on         | bar-link     | Active nav link (use: bar-link on)
+
+
+================================================================================
+4. FROST INTENSITY (stack on cards, panels, buttons)
+================================================================================
+
+Class  | Effect
+-------|--------------------------------------------------
+soft   | Light blur, very transparent
+(none) | Default blur and opacity
+bold   | Strong blur, more visible glass
+max    | Heaviest blur and opacity
+
+Example: <div class="card bold">
+
+
+================================================================================
+5. THEME MODIFIER
+================================================================================
+
+Class | Effect
+------|----------------------------------
+dim   | Dark glass instead of light glass
+
+Example: <div class="card dim">
+
+
+================================================================================
+6. COLOR TINTS (stack on any glass element)
+================================================================================
+
+Class    | Tint color
+---------|------------------
+t-sage   | Pale sage green
+t-coral  | Warm coral
+t-rose   | Dusty rose
+t-amber  | Golden amber
+t-teal   | Muted teal
+t-rust   | Rusty brown
+
+Example: <div class="card soft t-teal">
+
+
+================================================================================
+7. BLUR & CORNER HELPERS
+================================================================================
+
+Class   | Effect
+--------|----------------------------------
+blur-s  | Small blur only
+blur-l  | Large blur only
+r-s     | Small corners (12px)
+r-l     | Large corners (28px)
+r-pill  | Fully rounded pill shape
+r-full  | Perfect circle
+
+
+================================================================================
+8. TYPOGRAPHY
+================================================================================
+
+Class   | Use on              | What it looks like
+--------|---------------------|------------------------------------------
+title   | <h1> <h2> <h3>      | Main heading (2rem, bold)
+title-s | headings            | Small heading (1.25rem)
+title-l | headings            | Large hero heading (2.75rem)
+text    | <p>                 | Normal body text
+muted   | <p> <span>          | Secondary text (dimmed)
+faint   | <p> <span>          | Very subtle text
+cap     | <label> <span>      | Uppercase small label
+
+
+================================================================================
+9. LAYOUT
+================================================================================
+
+Class | Use on  | What it does
+------|---------|--------------------------------------------------
+wrap  | <div>   | Centered container (max-width 1200px)
+stack | <div>   | Vertical flex column with gap
+row   | <div>   | Horizontal flex row with gap
+grid  | <div>   | Auto-fit card grid
+mid   | <div>   | Center content vertically and horizontally
+fill  | <span>  | Push nav items apart (flex spacer)
+
+
+================================================================================
+10. SMALL UI EXTRAS
+================================================================================
+
+Class   | Use on | What it does
+--------|--------|--------------------------------------------------
+line    | <hr>   | Thin divider line
+dots    | <div>  | Pagination dot row
+dot     | <span> | Single dot
+dot on  | <span> | Active dot (use: class="dot on")
+
+
+================================================================================
+11. CSS VARIABLES (customize in your own CSS)
+================================================================================
+
+Variable      | Controls                    | Default
+--------------|-----------------------------|----------------------------------
+--bg          | Glass background color      | rgba(255,255,255,0.12)
+--bg-hover    | Hover background            | rgba(255,255,255,0.18)
+--bg-active   | Click / active background   | rgba(255,255,255,0.22)
+--bg-dim      | Dark glass background       | rgba(0,0,0,0.38)
+--blur        | Blur amount                 | 16px
+--blur-s      | Small blur                  | 8px
+--blur-l      | Large blur                  | 24px
+--blur-xl     | Extra large blur            | 32px
+--sat         | Saturation behind glass     | 155%
+--bright      | Brightness behind glass     | 100%
+--edge        | Border                      | 1px solid rgba(255,255,255,0.24)
+--edge-strong | Strong border               | 1px solid rgba(255,255,255,0.42)
+--edge-dim    | Dim border                  | 1px solid rgba(255,255,255,0.1)
+--glow        | Inner top highlight         | inset glow
+--radius      | Corner radius               | 20px
+--radius-s    | Small radius                | 12px
+--radius-l    | Large radius                | 28px
+--radius-pill | Pill radius                 | 9999px
+--shadow      | Drop shadow                 | soft dark shadow
+--shadow-s    | Small shadow                | lighter shadow
+--shadow-l    | Large shadow                | deeper shadow
+--ink         | Text color                  | #ffffff
+--ink-muted   | Muted text                  | white at 68% opacity
+--ink-faint   | Faint text                  | white at 42% opacity
+--font        | Font family                 | Inter, Segoe UI, system-ui
+--pad         | Card padding                | 1.5rem
+--pad-s       | Small padding               | 0.75rem 1.25rem
+--pad-l       | Large padding               | 2rem 2.5rem
+--gap         | Layout gap                  | 1rem
+--scene       | Page base color             | #10100e
+--blob-a      | Blob 1 color                | changes per bg-* theme
+--blob-b      | Blob 2 color                | changes per bg-* theme
+--blob-c      | Blob 3 color                | changes per bg-* theme
+
+Override example:
+
+:root {
+  --blur: 20px;
+  --radius: 24px;
+  --bg: rgba(255, 255, 255, 0.15);
+}
+
+
+================================================================================
+12. QUICK COPY-PASTE RECIPES
+================================================================================
+
+What you want          | Classes to use
+-----------------------|------------------------------------------
+Basic card             | card
+Hero section card      | panel bold
+Dark card              | card dim
+Colored card           | card t-coral
+Primary button         | btn btn-on
+Small ghost button     | btn btn-clear btn-s
+Nav bar                | bar  (links: bar-link)
+Active nav link        | bar-link on
+Label tag              | pill  or  badge
+Email input            | field
+Modal popup            | box
+Sidebar                | side
+Page with background   | scene bg-honey
+Centered hero          | mid  (inside layer wrap)
+Card grid              | grid  (with multiple card inside)
+Section title          | title title-l
+Subtitle text          | muted
+Form label             | cap
+
+
+================================================================================
+13. BACKGROUND THEMES — COLOR MOOD
+================================================================================
+
+Class     | Mood / Colors
+----------|--------------------------------------------------
+bg-terra  | Rusty red, burnt orange, golden yellow, beige
+bg-sage   | Muted teal, pale sage, warm coral, dusty rose
+bg-ember  | Burnt orange, sunset coral, deep charcoal
+bg-honey  | Golden amber, peach cream, warm brown
+bg-moss   | Forest green, moss, terracotta accent
+bg-ocean  | Deep teal, jade green, dark aqua
+bg-dusk   | Coral pink, teal accent, warm stone grey
+bg-stone  | Warm grey, mineral beige, charcoal
+bg-bloom  | Earthy coral, vivid green, subtle violet mesh
+bg-wine   | Burgundy, dusty rose, warm cream
+
+
+================================================================================
+14. FULL PAGE TEMPLATE
+================================================================================
+
+<link rel="stylesheet" href="css/glassmorphism.css">
+
+<body class="scene bg-ember">
+  <div class="blobs">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+  </div>
+
+  <div class="layer wrap">
+
+    <nav class="bar">
+      <span class="title-s">My App</span>
+      <span class="fill"></span>
+      <a class="bar-link on" href="#">Home</a>
+      <a class="bar-link" href="#">About</a>
+      <button class="btn btn-s btn-on">Start</button>
+    </nav>
+
+    <div class="mid">
+      <div class="panel bold t-amber">
+        <span class="pill">New</span>
+        <h1 class="title title-l">Welcome</h1>
+        <p class="muted">Your subtitle here</p>
+        <button class="btn btn-on">Get Started</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <span class="cap">Default</span>
+        <h3 class="title-s">Card One</h3>
+        <p class="muted">Description text.</p>
+      </div>
+      <div class="card dim">
+        <span class="cap">Dark</span>
+        <h3 class="title-s">Card Two</h3>
+        <p class="muted">Description text.</p>
+      </div>
+      <div class="card soft t-teal">
+        <span class="cap">Tinted</span>
+        <h3 class="title-s">Card Three</h3>
+        <p class="muted">Description text.</p>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 2rem;">
+      <div class="card" style="flex:1; max-width:360px;">
+        <label class="cap" for="email">Email</label>
+        <input class="field" id="email" type="email" placeholder="you@example.com">
+        <button class="btn" style="margin-top:1rem; width:100%;">Subscribe</button>
+      </div>
+      <div class="ring"><span class="muted">O</span></div>
+    </div>
+
+  </div>
+</body>
+
+
+================================================================================
+15. ALL CLASS NAMES — ALPHABETICAL LIST
+================================================================================
+
+badge
+bar
+bar-link
+bg-bloom
+bg-dusk
+bg-ember
+bg-honey
+bg-moss
+bg-ocean
+bg-sage
+bg-stone
+bg-terra
+bg-wine
+blob
+blob-a
+blob-b
+blob-c
+blobs
+blur-l
+blur-s
+bold
+box
+btn
+btn-clear
+btn-icon
+btn-l
+btn-on
+btn-s
+cap
+card
+card-l
+card-s
+dim
+dot
+dots
+faint
+field
+fill
+frost
+grid
+layer
+line
+max
+mid
+muted
+on
+panel
+pill
+ring
+row
+r-full
+r-l
+r-pill
+r-s
+scene
+side
+soft
+stack
+tag
+text
+title
+title-l
+title-s
+t-amber
+t-coral
+t-rose
+t-rust
+t-sage
+t-teal
+wrap
+
+
+================================================================================
+END OF CHEATSHEET
+================================================================================
