@@ -1,0 +1,20 @@
+{
+  "name": "otium",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/JDpatel69/lofi-hub/tree/dev#readme",
+  "bugs": {
+    "url": "https://github.com/JDpatel69/lofi-hub/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDpatel69/lofi-hub.git#dev"
+  },
+  "license": "ISC",
+  "author": "Jenish And Manan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
