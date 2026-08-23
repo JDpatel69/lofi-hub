@@ -8,34 +8,45 @@
     <link rel="stylesheet" href="../css/glassmorphism.css">
 </head>
 
-<body>
-    <div id="box">
-        <div id="task-bar">
-            <div>otuim</div>
+<body class="scene bg-dusk">
+
+    <div id="box" class="wrap">
+
+        <div class="card row">
+            <div class="title-s">otuim</div>
             <div></div>
         </div>
-        <div id="sb1">
+
+        <div class="row">
             <div>
-                <h2>To-do list</h2>
+                <h2 class="title">To-do list</h2>
             </div>
-            <div>status of list</div>
-        </div>
-        <div id="sb2">
-            <input type="text" id="new-element" name="username" placeholder="Enter Task">
-            <button id="add_task">+ADD</button>
-        </div>
-        <div id="filter">
-            <button id="all">All</button>
-            <button id="active">Active</button>
-            <button id="done">Done</button>
-        </div>
-        <div id="opt">
 
+            <div class="muted">status of list</div>
         </div>
-        <div id="status">
 
+        <div class="card row">
+            <input type="text" id="new-element" class="field" placeholder="Enter Task">
+
+            <button id="add_task" class="btn">
+                + ADD
+            </button>
         </div>
+
+        <div class="row" id="filter">
+            <button id="all" class="btn btn-s">All</button>
+            <button id="active" class="btn btn-s">Active</button>
+            <button id="done" class="btn btn-s">Done</button>
+        </div>
+
+        <div id="opt" class="stack">
+        </div>
+
+        <div id="status" class="card muted">
+        </div>
+
     </div>
+
 </body>
 
 </html>
