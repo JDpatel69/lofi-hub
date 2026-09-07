@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Pomodoro Timer</title>
   <link rel="stylesheet" href="../css/glassmorphism.css">
+  <script src="./js/pomodoro.js"></script>
 </head>
 <body class="scene bg-ocean">
 
@@ -11,7 +12,7 @@
     <div class="blob blob-a"></div>
     <div class="blob blob-b"></div>
     <div class="blob blob-c"></div>
-  </div>
+  </div>    
 
   <div class="layer wrap" style="margin-top: 2rem;">
 
@@ -25,7 +26,7 @@
     <div class="panel bold t-teal" style="margin-top: 2rem; text-align: center;">
       <p class="cap">Focus session</p>
       <div class="ring" style="width: 220px; height: 220px; margin: 1rem auto;">
-        <span class="title title-l">25:00</span>
+        <p id= "minutes">25</p><p>:</p><p id="seconds">00</p>
       </div>
 
       <div class="dots" style="margin-bottom: 1.5rem;">
