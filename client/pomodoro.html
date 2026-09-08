@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Pomodoro Timer</title>
   <link rel="stylesheet" href="../css/glassmorphism.css">
-  <script src="./js/pomodoro.js"></script>
+ 
 </head>
 <body class="scene bg-ocean">
 
@@ -41,9 +41,9 @@
       </div>
 
       <div class="row" style="justify-content: center;">
-        <button class="btn btn-icon">⏸</button>
-        <button class="btn btn-icon">⏭</button>
-        <button class="btn btn-icon">☕</button>
+        <button class="btn btn-icon" id="play">⏸</button>
+        <button class="btn btn-icon" id="skip">⏭</button>
+        <button class="btn btn-icon" id="reset">↻</button>
       </div>
 
       <p class="muted" style="margin-top: 1.5rem;">Session 2 of 4 · next: short break</p>
@@ -62,6 +62,7 @@
     </div>
 
   </div>
+<<<<<<< HEAD
   <script>
       document.addEventListener('DOMContentLoaded', function () {
           var username = localStorage.getItem('username') || 'Guest';
@@ -69,5 +70,8 @@
           document.getElementById('avatar').textContent = username.charAt(0);
       });
   </script>
+=======
+ <script src="./js/pomodoro.js"></script>
+>>>>>>> baa49e0 (aaded some function : function)
 </body>
 </html>

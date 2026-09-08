@@ -30,7 +30,42 @@ function pausetimer(){
         isrunning = false;
     }
 }
+const startbtn = document.getElementById('play');
+startbtn.addEventListener('click', toggletimer);
+
+function toggletimer(){
+    if(isrunning){
+        pausetimer();
+        startbtn.innerHTML = '▶';
+    }else{
+        starttimer();
+        startbtn.innerHTML = '⏸';
+    }
+}
+const skip = document.getElementById('skip');
+skip.addEventListener('click',skipsession);
+
+function skipsession(){
+
+
+}
+const reset = document.getElementById('reset');
+reset.addEventListener('click',resetsession);
+
+function resetsession(){
+
+    clearInterval(timeinterval);
+
+    isrunning = false;
+
+    sec = 25 * 60;
+    startbtn.innerHTML = '▶';
+    updatedisplay();
+
+
+}
+
 console.log("JS loaded");
-starttimer();
+
 
 
