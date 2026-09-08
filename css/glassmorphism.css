@@ -197,6 +197,40 @@
 }
 .bar-link:hover, .bar-link.on { background: var(--bg-hover); color: var(--ink); }
 
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: var(--edge);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--ease);
+}
+.profile:hover { background: var(--bg-hover); }
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.username {
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
 .field {
   width: 100%;
   padding: 0.875rem 1.25rem;

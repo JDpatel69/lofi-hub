@@ -18,6 +18,10 @@
          <span class= "fill"></span>
          <a class="bar-link on" href="To_do.html">To-do</a>
          <a class="bar-link" href="pomodoro.html">Pomodoro</a>
+         <div class="profile" id="profile">
+             <span class="avatar" id="avatar"></span>
+             <span class="username" id="username"></span>
+         </div>
     </nav>
 
         <div class="row">
@@ -28,8 +32,7 @@
             <div class="muted">status of list</div>
         </div>
         <div id="sb2">
-            <input type="text" id="new-element" name="username" placeholder="Enter Task">
-            <button id="addBtn">+ADD</button>
+           
 
         <div class="card row">
             <input type="text" id="new-element" class="field" placeholder="Enter Task">
@@ -53,6 +56,13 @@
 
     </div>
     <script src="../server/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var username = localStorage.getItem('username') || 'Guest';
+            document.getElementById('username').textContent = username;
+            document.getElementById('avatar').textContent = username.charAt(0);
+        });
+    </script>
 
 </body>
 
