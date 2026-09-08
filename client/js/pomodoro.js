@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function () {
+          var username = localStorage.getItem('username') || 'Guest';
+          document.getElementById('username').textContent = username;
+      });
 let sec = 25*60;
 let timeinterval =  null;
 let isrunning = false;
