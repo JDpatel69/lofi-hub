@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do</title>
+    <link rel="stylesheet" href="../css/glassmorphism.css">
+</head>
+
+<body class="scene bg-dusk">
+
+    <div id="box" class="wrap">
+
+        <div class="layer wrap" style="margin-top: 2rem; text-align: center;">
+    <nav class="bar">
+         <span class="title-s">Otium</span>
+         <span class= "fill"></span>
+         <a class="bar-link on" href="To_do.html">To-do</a>
+         <a class="bar-link" href="pomodoro.html">Pomodoro</a>
+         <div class="profile" id="profile">
+             <span class="username" id="username"></span>
+         </div>
+    </nav>
+
+        <div class="row">
+            <div>
+                <h2 class="title">To-do list</h2>
+            </div>
+
+            <div class="muted">status of list</div>
+        </div>
+        <div id="sb2">
+           
+
+        <div class="card row">
+            <input type="text" id="new-element" class="field" placeholder="Enter Task">
+
+            <button id="add_task" class="btn">
+                + ADD
+            </button>
+        </div>
+
+        <div class="row" id="filter">
+            <button id="all" class="btn btn-s">All</button>
+            <button id="active" class="btn btn-s">Active</button>
+            <button id="done" class="btn btn-s">Done</button>
+        </div>
+
+        <div id="opt" class="stack">
+        </div>
+
+        <div id="status" class="card muted">
+        </div>
+
+    </div>
+    <script src="../server/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var username = localStorage.getItem('username') || 'Guest';
+            document.getElementById('username').textContent = username;
+            document.getElementById('avatar').textContent = username.charAt(0);
+        });
+    </script>
+
+</body>
+
+</html>
